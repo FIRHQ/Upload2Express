@@ -1,13 +1,13 @@
 let upload_check_t
-const buildUploadPageUrl = (projectId, userId, uploadUid, mainAttribute = null, secondAttribute= null, uploadDomain = 'https://uploadhelper.ce04.com') =>  {
+const buildUploadPageUrl = (projectId, userId, uploadUid, mainAttribute = null, secondAttribute = null, uploadDomain = 'https://uploadhelper.ce04.com') => {
   return `${uploadDomain}/projects/${projectId}/standard_images/new?client_user_uid=${userId}&upload_uid=${uploadUid}&main_attribute=${mainAttribute}&second_attribute=${secondAttribute}`
 }
 
-const buildImageUrl = (projectId, userId, uploadUid,  uploadDomain = 'https://uploadhelper.ce04.com') => {
+const buildImageUrl = (projectId, userId, uploadUid, uploadDomain = 'https://uploadhelper.ce04.com') => {
   return `${uploadDomain}/fetch_image?project_id=${projectId}&client_user_id=${userId}&upload_uid=${uploadUid}`
 }
 
-const buildQrUrl = (projectId, userId, uploadUid, mainAttribute = null, secondAttribute= null, uploadDomain = 'https://uploadhelper.ce04.com') => {
+const buildQrUrl = (projectId, userId, uploadUid, mainAttribute = null, secondAttribute = null, uploadDomain = 'https://uploadhelper.ce04.com') => {
   return `${uploadDomain}/welcome/qrcode?url=${encodeURIComponent(buildUploadPageUrl(projectId, userId, uploadUid, mainAttribute, secondAttribute, uploadDomain))}`
 }
 
@@ -39,4 +39,4 @@ const fetchImageUrlInfo = (projectId, userId, uploadUid, uploadDomain = 'https:/
   })
 }
 
-module.exports = {fetchImageUrlInfo, buildImageUrl, buildQrUrl, buildUploadPageUrl};
+module.exports = { fetchImageUrlInfo, buildImageUrl, buildQrUrl, buildUploadPageUrl };
