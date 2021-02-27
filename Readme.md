@@ -4,6 +4,10 @@
 
 Upload2Express 可以配合 FileUpload， 直接生成上传的地址以及获得图片的地址， 不再需要自行设立 oss 等配置。
 
+demo: [https://uploadhelper.ce04.com/test.html](https://uploadhelper.ce04.com/test.html)
+
+codepen demo： [https://codepen.io/atpking/pen/rNWzzMo](https://codepen.io/atpking/pen/rNWzzMo)
+
 ## 安装
 
 - 使用包管理
@@ -185,7 +189,7 @@ json 为 此时图片信息的结果
 import React, { useState } from 'react';
 import { buildUploadPageUrl, fetchImageUrlInfo } from 'upload2express'
 
-const UploadElement = ({ projectId, userId, mainAttribute, secondAttribute, renderFunction}) => {
+const UploadElement = ({ projectId, userId, mainAttribute, secondAttribute, renderFunction, baseDomain = ''}) => {
   const [url, setUrl] = useState("")
   const [uploadImageUrl, setUploadImageUrl] = useState('')
 
