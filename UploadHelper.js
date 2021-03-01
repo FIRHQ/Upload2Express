@@ -35,7 +35,7 @@ class UploadHelper {
       this.uploadPanel.appendChild(this.imgElement)
     }
 
-    this.qrImgElement = qrImgElement || panel.querySelector('.qrcodeImg')
+    this.qrImgElement = qrImgElement || uploadPanel.querySelector('.qrcodeImg')
     if (this.qrImgElement == null){
       this.qrImgElement = document.createElement("img")
       this.qrImgElement.className = 'qrcodeImg'
