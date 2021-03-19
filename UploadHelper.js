@@ -26,7 +26,7 @@ class UploadHelper {
     this.projectId = projectId;
     this.domain = domain;
 
-    this.imgElement = imgElement || panel.querySelector('.img')
+    this.imgElement = imgElement || uploadPanel.querySelector('.img')
     if (this.imgElement == null){
       this.imgElement = document.createElement("img")
       this.imgElement.className = 'img'
