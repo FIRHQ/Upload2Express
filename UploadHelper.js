@@ -21,7 +21,7 @@ const ElementDisplay = (element, is_show) => {
 }
 
 class UploadHelper {
-  constructor({uploadPanel, projectId, domain = 'uploadhelper.ce04.com', imgElement = null, qrImgElement = null, qrcodeWidth=200, imgMaxWidth= 200, imgMaxHeight= 200}){
+  constructor({uploadPanel, projectId, domain = 'https://uploadhelper.ce04.com', imgElement = null, qrImgElement = null, qrcodeWidth=200, imgMaxWidth= 200, imgMaxHeight= 200}){
     this.uploadPanel = uploadPanel;
     this.projectId = projectId;
     this.domain = domain;
