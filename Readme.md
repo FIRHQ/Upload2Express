@@ -55,7 +55,9 @@ npm install upload2express
 返回一个Promise。 当调用此函数时， 系统会轮询请求图片的状态。当图片上传完毕, 且轮询运行时，会执行resolve(json)
 json 为 此时图片信息的结果
 
+## 源码编译
 
+运行 `webpack` 后， 在 dist 目录下即会生成压缩后的js文件
 ## Demo
 
 ### Pure JS 方式

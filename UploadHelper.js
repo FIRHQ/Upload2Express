@@ -1,27 +1,27 @@
 import {buildUploadPageUrl, buildImageUrl, buildQrUrl} from './index';
 
-const bindImg = (imgElement, imageUrl, loadFunction = (url) => {}) => {
+const bindImg = ({imgElement, imageUrl, showImage = true, loadFunction = (url) => {}}) => {
   imgElement.src = imageUrl
   imgElement.onerror = () => {
-    ElementDisplay(imgElement, false)
+    elementDisplay(imgElement, false)
     setTimeout(() => {
       imgElement.src = `${imageUrl}&t=${new Date().getTime()}`
     }, 3000)
   }
   imgElement.onload = () => {
-    ElementDisplay(imgElement, true)
+    if (showImage) { elementDisplay(imgElement, true) }
     loadFunction(imageUrl)
   }
 }
 
-const ElementDisplay = (element, is_show) => {
+const elementDisplay = (element, is_show) => {
   if (element){
     element.style.display = is_show ? '' : 'none'
   }
 }
 
 class UploadHelper {
-  constructor({uploadPanel, projectId, domain = 'https://uploadhelper.ce04.com', imgElement = null, qrImgElement = null, qrcodeWidth=200, imgMaxWidth= 200, imgMaxHeight= 200}){
+  constructor({uploadPanel, projectId, domain = 'https://uploadhelper.ce04.com', imgElement = null, showImgElement = true,  qrImgElement = null, qrcodeWidth=200, imgMaxWidth= 200, imgMaxHeight= 200}){
     this.uploadPanel = uploadPanel;
     this.projectId = projectId;
     this.domain = domain;
@@ -53,7 +53,7 @@ class UploadHelper {
       if(qrcodeBtn){
         qrcodeBtn.onclick = (e) => {
           e.preventDefault();
-          ElementDisplay(this.qrImgElement, true)
+          elementDisplay(this.qrImgElement, true)
           this.qrImgElement.src = buildQrUrl(this.projectId, userId, uid, mainAttribute, secondAttribute,secret, this.domain)
           this.bindImgLoad({ userId, uid, updateFunction})
         }
@@ -61,7 +61,7 @@ class UploadHelper {
 
       if(linkBtn){
         linkBtn.onclick = (e) => {
-          ElementDisplay(this.qrImgElement, false)
+          elementDisplay(this.qrImgElement, false)
           this.bindImgLoad({userId, uid, updateFunction})
           let pageUrl = buildUploadPageUrl(this.projectId, userId, uid, mainAttribute,secondAttribute, secret, this.domain)
           window.open(pageUrl)
@@ -75,21 +75,25 @@ class UploadHelper {
 
   bindImgLoad({ userId, uid, updateFunction}){
     let imageUrl = buildImageUrl(this.projectId, userId, uid, this.domain)
-    bindImg(this.imgElement, imageUrl, (url) => {
-      ElementDisplay(this.qrImgElement, false)
-      updateFunction(url)
+    bindImg({
+      imgElement: this.imgElement,
+      imageUrl,
+      loadFunction: (url) => {
+        elementDisplay(this.qrImgElement, false)
+        updateFunction(url)
+      }
     })
   }
 
   uploadByBrowser({userId = -1, uid, secret = null, mainAttribute = null, secondAttribute = null, updateFunction}){
-    ElementDisplay(this.qrImgElement, false)
+    elementDisplay(this.qrImgElement, false)
     this.bindImgLoad({userId, uid, updateFunction})
     let pageUrl = buildUploadPageUrl(this.projectId, userId, uid, mainAttribute,secondAttribute, secret, this.domain)
     window.open(pageUrl)
   }
 
   uploadByQrScan({userId = -1, uid, secret = null, mainAttribute = null, secondAttribute = null, updateFunction}){
-    ElementDisplay(this.qrImgElement, true)
+    elementDisplay(this.qrImgElement, true)
     this.qrImgElement.src = buildQrUrl(this.projectId, userId, uid, mainAttribute, secondAttribute,secret, this.domain)
     this.bindImgLoad({ userId, uid, updateFunction})
   }
