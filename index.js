@@ -1,9 +1,10 @@
 import UploadHelper from './UploadHelper'
 
 let upload_check_t
-const buildUploadPageUrl = (projectId, userId, uploadUid, mainAttribute = null, secondAttribute = null, secret = null, uploadDomain = 'https://uploadhelper.ce04.com') => {
+const buildUploadPageUrl = (projectId, userId, uploadUid = null, mainAttribute = null, secondAttribute = null, secret = null, uploadDomain = 'https://uploadhelper.ce04.com') => {
+  var finalUploadUrl = uploadUid || new Date().getTime().toString()
 
-  var url =  `${uploadDomain}/projects/${projectId}/standard_images/new?client_user_uid=${userId}&upload_uid=${uploadUid}&main_attribute=${mainAttribute}&second_attribute=${secondAttribute}`
+  var url =  `${uploadDomain}/projects/${projectId}/standard_images/new?client_user_uid=${userId}&upload_uid=${finalUploadUrl}&main_attribute=${mainAttribute}&second_attribute=${secondAttribute}`
   if (secret){
     url = `${url}&secret=${secret}`
   }
