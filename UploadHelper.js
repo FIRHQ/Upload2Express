@@ -21,10 +21,11 @@ const elementDisplay = (element, is_show) => {
 }
 
 class UploadHelper {
-  constructor({uploadPanel, projectId, domain = 'https://uploadhelper.ce04.com', imgElement = null, showImgElement = true,  qrImgElement = null, qrcodeWidth=200, imgMaxWidth= 200, imgMaxHeight= 200}){
+  constructor({uploadPanel, projectId, domain = 'https://uploadhelper.ce04.com', imgElement = null, showImg = true,  qrImgElement = null, qrcodeWidth=200, imgMaxWidth= 200, imgMaxHeight= 200}){
     this.uploadPanel = uploadPanel;
     this.projectId = projectId;
     this.domain = domain;
+    this.showImg =showImg;
 
     this.imgElement = imgElement || uploadPanel.querySelector('.img')
     if (this.imgElement == null){
@@ -78,6 +79,7 @@ class UploadHelper {
     bindImg({
       imgElement: this.imgElement,
       imageUrl,
+      showImg: this.showImg,
       loadFunction: (url) => {
         elementDisplay(this.qrImgElement, false)
         updateFunction(url)
