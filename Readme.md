@@ -2,7 +2,7 @@
 
 ## 简介
 
-Upload2Express 可以配合 FileUpload， 直接生成上传的地址以及获得图片的地址， 不再需要自行设立 oss 等配置。
+使用 Upload2Express 直接生成上传的地址以及获得图片的地址， 不再需要自行设立 oss 等配置。
 
 demo: [https://www.tapbeta.com](https://www.tapbeta.com)
 
