@@ -4,9 +4,8 @@
 
 Upload2Express 可以配合 FileUpload， 直接生成上传的地址以及获得图片的地址， 不再需要自行设立 oss 等配置。
 
-demo: [https://uploadhelper.ce04.com/test.html](https://uploadhelper.ce04.com/test.html)
+demo: [https://www.tapbeta.com](https://www.tapbeta.com)
 
-codepen demo： [https://codepen.io/atpking/pen/rNWzzMo](https://codepen.io/atpking/pen/rNWzzMo)
 
 ## js使用方法
 
@@ -52,11 +51,11 @@ import {UploadHelper} from 'Upload2Express';
 
 ## 在按钮事件中调用方法
 
-- 将按钮事件中调用 `跳转窗口上传` 方法
+**将按钮事件中调用 `跳转窗口上传` 方法**
 
 `uploadByBrowser({userId = 'default', uid, secret = null, mainAttribute = null, secondAttribute = null, updateFunction})`
 
-- 将按钮事件中调用 `二维码扫码手机上传` 方法
+**将按钮事件中调用 `二维码扫码手机上传` 方法**
 
 `  uploadByQrScan({userId = 'default', uid, secret = null, mainAttribute = null, secondAttribute = null, updateFunction})`
 
@@ -73,7 +72,7 @@ import {UploadHelper} from 'Upload2Express';
 | uploadFunction | Func | 否 | 用户图片上传完毕后的回调函数 | 当用户上传完毕图像后， js 将收到回调， 参数为 用户上传的图片的 url
 
 
-## 也可以不自己处理事件， 直接让UploadHelper对象绑定所有事件
+**也可以不自己处理事件， 直接让UploadHelper对象绑定所有事件**
 
 ```
   bindAllElement({qrcodeBtn, linkBtn, userId, uid, fetchSecretPromise = null, mainAttribute = null, secondAttribute = null, updateFunction})
